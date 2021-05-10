@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    container_name: {{name}}-app
+    image: node:16
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash ./docker/start.sh
+    expose:
+      - '{{app-port}}'
+    ports:
+      - {{app-port}}:{{app-port}}
+    depends_on:
+      - db
+      - adminer
+  db:
+    container_name: {{name}}-db
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ./docker/storage/postgres:/var/lib/postgresql/data
+      - ./docker/db-init.sh:/docker-entrypoint-initdb.d/10-db-init.sh
+    environment:
+      POSTGRES_PASSWORD: {{name}}-db-pass
+      POSTGRES_USER: {{name}}-db-user
+      POSTGRES_DB: {{name}}-db-name
+      TEST_POSTGRES_DB: {{name}}-test-db-name
+  adminer:
+    container_name: {{name}}-adminer
+    image: adminer:latest
+    ports:
+      - {{adminer-port}}:8080

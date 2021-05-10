@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+cmd="$1"
+
+if [ "$cmd" = "" ] || [ "$cmd" = "help" ] || [ "$cmd" = "--help" ]; then
+  echo -n "Docker environment commands:
+    ./dev start              Bring up the environment.
+    ./dev <command>          Run <command> inside the app container.
+  "
+  exit 0
+fi
+
+if [ "$cmd" = "start" ]; then
+  docker-compose up
+  docker-compose down --remove-orphans -v
+  exit 0
+fi
+
+if [ -z `docker ps -q --no-trunc | grep $(docker-compose ps -q {{name}}-app) > /dev/null 2> /dev/null` ]; then
+  echo "The docker environment is not running, please use './dev start' to bring it up before running this command"
+  exit 1
+fi
+
+docker-compose run --user "$(id -u):$(id -g)" --rm api bash -c "$*"

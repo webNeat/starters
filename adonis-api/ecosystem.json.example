@@ -1,0 +1,5 @@
+{
+  "name": "{{name}}",
+  "port": 5000,
+  "script": "server.js"
+}

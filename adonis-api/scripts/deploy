@@ -1,0 +1,4 @@
+npm run build
+cd build
+npm ci --production
+node ace migration:run

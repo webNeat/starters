@@ -1,0 +1,11 @@
+.idea
+node_modules
+build
+coverage
+.vscode
+.DS_STORE
+tmp
+.cache
+dist
+.env
+public
