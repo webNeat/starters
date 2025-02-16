@@ -1,12 +1,12 @@
 import path from "path";
 import { exec } from "child_process";
 import { createInterface } from "readline";
-import { cp, mkdir, readFile, rmdir } from "fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "fs/promises";
 
 const starters = {};
 starters["react-library"] = {
   placeholders: {
-    "{{name}}": "Your package name, e.g. react-library",
+    "{{package-name}}": "Your package name, e.g. react-library",
     "{{description}}": "A short description of your library",
     "{{repo}}": "Your repository name, e.g. webneat/react-library",
   },
@@ -28,6 +28,8 @@ async function main() {
   );
   const dir = await ask("Destination directory:");
   const name = starter_names[index - 1];
+
+  console.log(`Let's fill placeholders of the ${name} starter ...`);
   const { placeholders, templates } = starters[name];
   const values = {};
   for (const [key, description] of Object.entries(placeholders)) {
@@ -53,13 +55,13 @@ async function main() {
     error = err;
   }
   console.log(`Removing the template directory ...`);
-  await rmdir(tmp_dir, { recursive: true, force: true });
+  await rm(tmp_dir, { recursive: true, force: true });
   if (error) throw error;
   console.log(`Done!`);
 }
 
 async function ask(message) {
-  return new Promise((resolve) => rl.question(message, resolve));
+  return new Promise((resolve) => rl.question(message + "\n", resolve));
 }
 
 async function $(command) {
@@ -81,4 +83,6 @@ async function render(file, values) {
   await writeFile(file, content);
 }
 
-main().catch(console.error);
+main()
+  .catch(console.error)
+  .then(() => rl.close());
