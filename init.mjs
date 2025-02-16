@@ -13,27 +13,23 @@ starters["react-library"] = {
   templates: [".changeset/config.json", "package.json", "README.md"],
 };
 
-const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 async function main() {
   const starter_names = Object.keys(starters);
   const index = await ask(
     [
       "Please choose a starter (enter the corresponding number):",
       ...starter_names.map((name, i) => `${i + 1}. ${name}`),
+      "> ",
     ].join("\n")
   );
-  const dir = await ask("Destination directory:");
+  const dir = await ask("Destination directory: ");
   const name = starter_names[index - 1];
 
   console.log(`Let's fill placeholders of the ${name} starter ...`);
   const { placeholders, templates } = starters[name];
   const values = {};
   for (const [key, description] of Object.entries(placeholders)) {
-    values[key] = await ask(description);
+    values[key] = await ask(description + ": ");
   }
 
   const tmp_dir = `tmp-${Date.now()}-starters`;
@@ -61,7 +57,17 @@ async function main() {
 }
 
 async function ask(message) {
-  return new Promise((resolve) => rl.question(message + "\n", resolve));
+  let input;
+  if (process.stdin.isTTY) {
+    input = process.stdin;
+  } else {
+    const fs = await import("fs");
+    input = fs.createReadStream("/dev/tty");
+  }
+  const rl = createInterface({ input, output: process.stdout });
+  const answer = await new Promise((resolve) => rl.question(message, resolve));
+  rl.close();
+  return answer;
 }
 
 async function $(command) {
@@ -85,4 +91,4 @@ async function render(file, values) {
 
 main()
   .catch(console.error)
-  .then(() => rl.close());
+  .then(() => process.stdin.destroy());
