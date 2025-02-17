@@ -1,0 +1,2 @@
+☐ Install https://github.com/apps/changeset-bot
+☐ Add NPM_TOKEN secret https://github.com/{{repo}}/settings/secrets/actions
