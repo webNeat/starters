@@ -2,8 +2,7 @@ name: Release
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -13,30 +12,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
-
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
+          node-version: 23
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
-
+          version: 10
       - name: Install Dependencies
-        run: pnpm install
-
+        run: pnpm install --frozen-lockfile
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          version: pnpm run version
-          commit: "chore: version packages"
-          title: "chore: version packages"
+          publish: pnpm changeset publish
+          commit: "Release ${{ steps.changesets.outputs.publishedPackages[0].version }}"
+          title: "Release ${{ steps.changesets.outputs.publishedPackages[0].version }}"
+          createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
