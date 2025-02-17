@@ -5,6 +5,11 @@ export default {
       "{{description}}": "A short description of your library",
       "{{repo}}": "Your repository name, e.g. webneat/react-library",
     },
-    templates: [".changeset/config.json", "package.json", "README.md"],
+    templates: [
+      ".changeset/config.json",
+      "first-steps.todo",
+      "package.json",
+      "README.md",
+    ],
   },
 };
