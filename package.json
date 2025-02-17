@@ -1,6 +1,6 @@
 {
   "name": "@qalam/create-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Starters for personal projects",
   "main": "create.js",
   "bin": {
