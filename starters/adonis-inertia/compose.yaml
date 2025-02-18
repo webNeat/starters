@@ -1,0 +1,63 @@
+services:
+  app:
+    image: node:23
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 3001:3001
+    environment:
+      PORT: 3001
+      HOST: 0.0.0.0
+      NODE_ENV: development
+      DB_HOST: db
+      DB_USER: db_user
+      DB_PASSWORD: db_pass
+      DB_DATABASE: db_name
+      MAIL_TRANSPORT: smtp
+      SMTP_HOST: smtp
+      SMTP_PORT: 1025
+      RESEND_API_KEY: xxx
+    command: /bin/sh -c "npm i -g pnpm && pnpm install --frozen-lockfile && sleep 10 && node ace migration:run && pnpm run dev"
+    depends_on:
+      - db
+      - test_db
+      - smtp
+  emails-dev:
+    image: node:22
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 3002:3002
+    command: npm run emails
+  db:
+    image: postgres
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_pass
+      POSTGRES_DB: db_name
+  test_db:
+    image: postgres
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: test_db_user
+      POSTGRES_PASSWORD: test_db_pass
+      POSTGRES_DB: test_db_name
+  smtp:
+    image: mailhog/mailhog
+    expose:
+      - 1025
+    ports:
+      - 3003:8025
+  adminer:
+    image: adminer
+    ports:
+      - 3004:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    depends_on:
+      - db

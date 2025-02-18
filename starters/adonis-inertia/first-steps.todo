@@ -1,0 +1,11 @@
+☐ Add the following secrets for deployment https://github.com/{{repo}}/settings/secrets/actions
+  ☐ `VPS_SSH_KEY`: private ssh key to access to the VPS.
+  ☐ `VPS_IP`: the VPS IP address to connect to.
+  ☐ `VPS_PASS`: the sudo password in the VPS.
+  ☐ `VPS_USER`: the VPS linux user.
+  ☐ `PROD_ENV` and `DEV_ENV`: the environment variables for production and staging deployments
+    Write the env vars like the following
+    KEY: VALUE
+    KEY: VALUE
+    ...
+    it will be parsed as a YAML object

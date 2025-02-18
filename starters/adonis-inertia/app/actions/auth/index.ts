@@ -1,0 +1,6 @@
+export * as register from './register.js'
+export * as login from './login.js'
+export * as logout from './logout.js'
+export * as confirm_email from './confirm_email.js'
+export * as forgot_password from './forgot_password.js'
+export * as reset_password from './reset_password.js'

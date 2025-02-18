@@ -1,0 +1,51 @@
+asap:
+  ai:
+    ☐ use llms from various providers
+    ☐ compose llms into one function
+    ☐ error handling and monitoring
+    ☐ mock llms during tests
+    ☐ RAG
+    ☐ tools? agents?
+
+  ci/cd:
+    ☐ type-checks
+    ☐ run tests
+    ☐ deploy
+      document needed secrets
+
+later:
+  users management:
+    ☐ register
+      ☐ with Google
+      ☐ with GitHub
+    ☐ login
+      ☐ with Google
+      ☐ with GitHub
+
+  server sent events:
+    ☐ emit events to specific users asynchronously
+    example: realtime chat
+
+  roles and permissions:
+    ☐ ...
+
+  file uploads:
+    ☐ ...
+
+  background jobs:
+    ☐ queue
+    ☐ scheduled tasks
+
+  backups:
+    ☐ database backups
+    ☐ file backups
+
+  caching:
+    ☐ cache HTML SSR responses
+    ☐ a way to invalidate cache
+    ☐ cache some db queries
+    ☐ a way to invalidate cache for specific db queries
+
+  tests:
+    ☐ e2e tests
+

@@ -12,4 +12,16 @@ export default {
       "README.md",
     ],
   },
+  "adonis-inertia": {
+    placeholders: {
+      "{{app-name}}": "Your application name, e.g. my-awesome-app",
+      "{{domain}}": "Your domain name, e.g. my-awesome-app.com",
+    },
+    templates: [
+      "first-steps.todo",
+      "package.json",
+      "deployment.js",
+      "README.md",
+    ],
+  },
 };
