@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" == "dev" ]; then
+  docker compose up
+elif [ "$1" == "down" ]; then
+  docker compose $*
+else
+  docker compose run --rm app npm run $*
+fi
