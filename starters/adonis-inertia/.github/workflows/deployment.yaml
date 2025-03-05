@@ -28,7 +28,7 @@ jobs:
           server_sudo_pass: ${{ secrets.VPS_PASS }}
           vars: |
             {
-              "prod_env": ${{ toJSON(secrets.PROD_ENV) }}
+              "prod_env": ${{ toJSON(secrets.PROD_ENV) }},
               "dev_env": ${{ toJSON(secrets.DEV_ENV) }}
             }
           handler: deployment.js

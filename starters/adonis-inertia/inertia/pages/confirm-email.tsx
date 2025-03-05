@@ -1,7 +1,7 @@
 import { Head } from '@inertiajs/react'
-import { urls } from '~/urls.js'
-import { SharedProps } from '~/types.js'
-import { Container, Card, Title, Text, Navbar, SuccessIcon, Link, Page, PageContent } from '~/components'
+import { urls } from '../urls.js'
+import { SharedProps } from '../types.js'
+import { Container, Card, Title, Text, Navbar, SuccessIcon, Link, Page, PageContent } from '../components/index.js'
 
 export type Props = SharedProps & {}
 

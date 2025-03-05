@@ -1,8 +1,8 @@
 import { Head, useForm } from '@inertiajs/react'
-import { Navbar } from '~/components/Navbar'
-import { SharedProps } from '~/types'
-import { urls } from '~/urls'
+import { SharedProps } from '../types.js'
+import { urls } from '../urls.js'
 import {
+  Navbar,
   Button,
   Container,
   ErrorMessage,
@@ -17,7 +17,7 @@ import {
   Link,
   Text,
   Card,
-} from '~/components/ui'
+} from '../components/index.js'
 
 export type Props = SharedProps
 
@@ -51,7 +51,7 @@ export default function ({ user }: Props) {
                     autoComplete="email"
                     required
                     value={data.email}
-                    onChange={(e) => setData('email', e.target.value)}
+                    onChange={(e: any) => setData('email', e.target.value)}
                     variant={errors.email ? 'error' : 'default'}
                   />
                   {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
@@ -68,7 +68,7 @@ export default function ({ user }: Props) {
                     autoComplete="current-password"
                     required
                     value={data.password}
-                    onChange={(e) => setData('password', e.target.value)}
+                    onChange={(e: any) => setData('password', e.target.value)}
                     variant={errors.password ? 'error' : 'default'}
                   />
                   {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}

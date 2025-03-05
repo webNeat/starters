@@ -1,4 +1,4 @@
-import env from '#start/env'
+import env from '#start/env.js'
 import { defineConfig, services } from '@adonisjs/ally'
 
 const allyConfig = defineConfig({

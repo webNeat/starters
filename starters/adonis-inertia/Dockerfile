@@ -1,15 +1,16 @@
-FROM node:22.7.0-alpine3.19 as base
+FROM node:23-alpine AS base
+RUN npm i -g pnpm
 
 # Build
-FROM base as build
+FROM base AS build
 WORKDIR /app
 ADD . .
-RUN npm ci
+RUN pnpm install --frozen-lockfile --config.confirmModulesPurge=false
 RUN node ace build
 
 # Run
 FROM base
 WORKDIR /app
 COPY --from=build /app/build /app
-RUN npm ci --omit=dev
+RUN pnpm install --frozen-lockfile --prod --config.confirmModulesPurge=false
 CMD ["node", "./bin/server.js"]

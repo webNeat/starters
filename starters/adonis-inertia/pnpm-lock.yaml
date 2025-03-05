@@ -178,6 +178,9 @@ importers:
       vite:
         specifier: ^6.1.1
         version: 6.1.1(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
+      yaml:
+        specifier: ^2.7.0
+        version: 2.7.0
 
 packages:
 
