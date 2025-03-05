@@ -1,8 +1,8 @@
-import { dye } from '~/libs'
+import { ReactNode } from 'react'
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { HiCheckCircle, HiXCircle } from 'react-icons/hi2'
-import { ReactNode } from 'react'
 import { Link as InertiaLink } from '@inertiajs/react'
+import { dye } from '../libs.js'
 
 // Layout components
 export const Page = dye('min-h-screen bg-gray-100')

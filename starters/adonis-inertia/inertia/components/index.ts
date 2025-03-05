@@ -1,2 +1,2 @@
-export * from './ui'
-export * from './Navbar'
+export * from './ui.js'
+export * from './Navbar.js'

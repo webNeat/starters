@@ -1,6 +1,6 @@
 import { Head, useForm } from '@inertiajs/react'
-import { SharedProps } from '~/types'
-import { urls } from '~/urls'
+import { SharedProps } from '../types.js'
+import { urls } from '../urls.js'
 import {
   Navbar,
   Button,
@@ -16,7 +16,7 @@ import {
   Title,
   Card,
   Text,
-} from '~/components'
+} from '../components/index.js'
 
 export type Props = SharedProps & {
   state: 'form' | 'sent'
@@ -62,7 +62,7 @@ function ForgotPasswordForm() {
             autoComplete="email"
             required
             value={data.email}
-            onChange={(e) => setData('email', e.target.value)}
+            onChange={(e: any) => setData('email', e.target.value)}
             variant={errors.email ? 'error' : 'default'}
           />
           {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}

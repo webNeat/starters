@@ -1,6 +1,6 @@
-import { User } from '~/types'
-import { urls } from '~/urls'
-import { Nav, NavContainer, NavContent, NavLinks, NavLink } from './ui'
+import { User } from '../types.js'
+import { urls } from '../urls.js'
+import { Nav, NavContainer, NavContent, NavLinks, NavLink } from './ui.js'
 
 export interface Props {
   user: User | null

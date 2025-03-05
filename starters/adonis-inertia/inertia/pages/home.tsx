@@ -1,7 +1,6 @@
 import { Head } from '@inertiajs/react'
-import { Navbar } from '~/components/Navbar'
-import { Page } from '~/components/ui'
-import { SharedProps } from '~/types'
+import { Page, Navbar } from '../components/index.js'
+import { SharedProps } from '../types.js'
 
 export type Props = SharedProps
 
@@ -15,11 +14,7 @@ export default function ({ user }: Props) {
           <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900">
               <h1 className="text-2xl font-semibold mb-6">Welcome to My App</h1>
-              <p className="text-gray-600">
-                {user
-                  ? `Welcome back, ${user.email}!`
-                  : 'Please log in or register to get started.'}
-              </p>
+              <p className="text-gray-600">{user ? `Welcome back, ${user.email}!` : 'Please log in or register to get started.'}</p>
             </div>
           </div>
         </div>

@@ -1,6 +1,4 @@
-import { Head } from '@inertiajs/react'
-import { Navbar } from '~/components/Navbar'
-import { SharedProps } from '~/types'
+import { SharedProps } from '../types.js'
 
 export type Props = SharedProps
 

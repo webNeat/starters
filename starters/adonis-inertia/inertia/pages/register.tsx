@@ -1,6 +1,6 @@
 import { Head, useForm } from '@inertiajs/react'
-import { SharedProps } from '~/types'
-import { urls } from '~/urls'
+import { SharedProps } from '../types.js'
+import { urls } from '../urls.js'
 import {
   Navbar,
   Button,
@@ -17,7 +17,7 @@ import {
   Page,
   PageContent,
   Card,
-} from '~/components'
+} from '../components/index.js'
 
 export type Props = SharedProps
 
@@ -52,7 +52,7 @@ export default function ({ user }: Props) {
                     autoComplete="email"
                     required
                     value={data.email}
-                    onChange={(e) => setData('email', e.target.value)}
+                    onChange={(e: any) => setData('email', e.target.value)}
                     variant={errors.email ? 'error' : 'default'}
                   />
                   {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
@@ -69,7 +69,7 @@ export default function ({ user }: Props) {
                     autoComplete="new-password"
                     required
                     value={data.password}
-                    onChange={(e) => setData('password', e.target.value)}
+                    onChange={(e: any) => setData('password', e.target.value)}
                     variant={errors.password ? 'error' : 'default'}
                   />
                   {errors.password && <ErrorMessage>{errors.password}</ErrorMessage>}
@@ -86,7 +86,7 @@ export default function ({ user }: Props) {
                     autoComplete="new-password"
                     required
                     value={data.password_confirmation}
-                    onChange={(e) => setData('password_confirmation', e.target.value)}
+                    onChange={(e: any) => setData('password_confirmation', e.target.value)}
                     variant={errors.password_confirmation ? 'error' : 'default'}
                   />
                   {errors.password_confirmation && <ErrorMessage>{errors.password_confirmation}</ErrorMessage>}
