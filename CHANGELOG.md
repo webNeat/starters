@@ -1,5 +1,11 @@
 # @qalam/create-project
 
+## 0.2.0
+
+### Minor Changes
+
+- [#13](https://github.com/webNeat/starters/pull/13) [`a5e1305`](https://github.com/webNeat/starters/commit/a5e130553ee8a31b3fa0e4b0c145322f323c9486) Thanks [@webNeat](https://github.com/webNeat)! - adonis-inertia: Fix tests and CI/CD
+
 ## 0.1.0
 
 ### Minor Changes
