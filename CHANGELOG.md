@@ -1,5 +1,11 @@
 # @qalam/create-project
 
+## 0.3.0
+
+### Minor Changes
+
+- [#15](https://github.com/webNeat/starters/pull/15) [`f18e001`](https://github.com/webNeat/starters/commit/f18e0010d08bd4312cca5d6f9ed35e74aff74462) Thanks [@webNeat](https://github.com/webNeat)! - Add node-library starter
+
 ## 0.2.0
 
 ### Minor Changes
