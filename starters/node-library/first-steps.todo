@@ -1,0 +1,4 @@
+- [ ] Write your library code in the `src` directory
+- [ ] Add tests for your code
+- [ ] Update the `README.md` with detailed information about your library
+- [ ] Add `NPM_TOKEN` to your repository secrets to enable automatic publishing
