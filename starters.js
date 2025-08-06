@@ -1,4 +1,17 @@
 export default {
+  "node-library": {
+    placeholders: {
+      "{{package-name}}": "Your package name, e.g. node-library",
+      "{{description}}": "A short description of your library",
+      "{{repo}}": "Your repository name, e.g. webneat/node-library",
+      "{{author}}": "Your name, e.g. John Doe",
+    },
+    templates: [
+      ".changeset/config.json",
+      "package.json",
+      "README.md",
+    ],
+  },
   "react-library": {
     placeholders: {
       "{{package-name}}": "Your package name, e.g. react-library",

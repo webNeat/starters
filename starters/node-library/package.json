@@ -1,0 +1,43 @@
+{
+  "name": "{{package-name}}",
+  "version": "0.0.0",
+  "description": "{{description}}",
+  "license": "MIT",
+  "author": "{{author}}",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "test-watch": "vitest --watch",
+    "format": "prettier --write .",
+    "release": "pnpm build && changeset publish",
+    "version": "changeset version && pnpm install --no-frozen-lockfile"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@changesets/changelog-github": "^0.5.0",
+    "@types/node": "^20.11.17",
+    "prettier": "^3.2.5",
+    "tsup": "^8.2.3",
+    "typescript": "^5.3.3",
+    "vitest": "^1.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
